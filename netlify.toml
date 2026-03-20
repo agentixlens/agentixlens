@@ -1,0 +1,31 @@
+# ============================================================
+# AgentixLens — Netlify Config (Frontend Only)
+# Netlify serves ONLY the static HTML files.
+# The Python backend runs separately on Railway/Render/Fly.
+# ============================================================
+
+[build]
+  publish = "."          # serve from the same folder as this file
+  command = ""           # NO build command — pure static HTML, nothing to build
+  ignore  = "exit 0"    # never skip deploy
+
+[build.environment]
+  # Explicitly disable all runtimes so Netlify doesn't auto-detect Python/Node
+  PYTHON_VERSION = ""
+  NODE_VERSION   = ""
+
+# ── Security Headers ─────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options           = "DENY"
+    X-Content-Type-Options    = "nosniff"
+    X-XSS-Protection          = "1; mode=block"
+    Referrer-Policy           = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+# Don't cache HTML files (so updates deploy immediately)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
