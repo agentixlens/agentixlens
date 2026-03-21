@@ -1,0 +1,80 @@
+# ============================================================
+# AgentixLens — .gitignore
+# ============================================================
+
+# ── SECRETS (NEVER commit these) ─────────────────────────────
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.env
+.env.local
+.env.production
+.env.staging
+backend/.env
+*.key
+*.pem
+secrets.json
+
+# ── DATABASES ────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+~/.agentixlens/
+
+# ── PYTHON ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── NODE / JS (if added later) ───────────────────────────────
+node_modules/
+.next/
+.nuxt/
+dist/
+.cache/
+
+# ── OS ───────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ── EDITORS ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.cursor/
+
+# ── DOCKER ───────────────────────────────────────────────────
+docker-compose.override.yml
+
+# ── LOGS ─────────────────────────────────────────────────────
+*.log
+logs/
