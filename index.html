@@ -967,6 +967,24 @@
   .form-success.show{display:block}
   .waitlist-btn:disabled{opacity:0.6;cursor:not-allowed}
 
+  /* ── CONTACT FORM SECTION ── */
+  .contact-section{position:relative;padding:60px 2rem;background:var(--bg2);border-top:1px solid var(--border);z-index:1}
+  .contact-container{max-width:700px;margin:0 auto}
+  .contact-section .section-heading{margin-bottom:0.75rem}
+  .contact-section .section-sub{margin-bottom:2rem}
+  .form-group{margin-bottom:1.5rem}
+  .form-group label{display:block;margin-bottom:0.5rem;font-size:0.875rem;font-weight:500;color:var(--text)}
+  .form-group input, .form-group textarea{width:100%;padding:12px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.95rem;transition:all 0.2s;resize:vertical}
+  .form-group input:focus, .form-group textarea:focus{outline:none;border-color:var(--border-cyan);box-shadow:0 0 12px var(--cyan-dim)}
+  .form-group textarea{min-height:120px}
+  .form-submit{width:100%;padding:12px 20px;background:var(--cyan);color:#06090f;border:none;border-radius:var(--radius);font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif}
+  .form-submit:hover{box-shadow:0 0 24px var(--cyan-glow);transform:translateY(-2px)}
+  .form-submit:disabled{opacity:0.6;cursor:not-allowed}
+  .form-message{margin-top:1rem;padding:12px 16px;border-radius:var(--radius);font-size:0.875rem;text-align:center;display:none}
+  .form-message.success{background:var(--green-dim);color:var(--green);border:1px solid rgba(0,255,136,0.3);display:block}
+  .form-message.error{background:rgba(255,71,87,0.1);color:var(--red);border:1px solid rgba(255,71,87,0.3);display:block}
+  .contact-divider{margin:3rem 0;border:none;border-top:1px solid var(--border)}
+
 </style>
 </head>
 <body>
@@ -976,7 +994,7 @@
     <button class="modal-close" onclick="closePrivacy()">&#x2715; Close</button>
     <div class="modal-title">Privacy Policy</div>
     <div class="modal-body">
-      <p>Last updated: March 2025. AgentixLens is committed to protecting your privacy.</p>
+      <p>Last updated: March 2026. AgentixLens is committed to protecting your privacy.</p>
       <h3>Information We Collect</h3>
       <p>We collect your email address when you join our waitlist. We do not sell, rent, or share your email with third parties. We use it only to send product updates and your early access invitation.</p>
       <h3>SDK & Telemetry Data</h3>
@@ -984,9 +1002,9 @@
       <h3>Cookies</h3>
       <p>This website does not use cookies or third-party tracking scripts.</p>
       <h3>Data Deletion</h3>
-      <p>To remove your email, contact <a href="mailto:privacy@agentixlens.com" style="color:var(--cyan)">privacy@agentixlens.com</a> and we will delete it within 48 hours.</p>
+      <p>To remove your email, contact <a href="/cdn-cgi/l/email-protection#1262607b6473716b527375777c667b6a7e777c613c717d7f" style="color:var(--cyan)"><span class="__cf_email__" data-cfemail="0d7d7f647b6c6e744d6c6a68637964756168637e236e6260">[email&#160;protected]</span></a> and we will delete it within 48 hours.</p>
       <h3>Contact</h3>
-      <p>Questions? Email <a href="mailto:hello@agentixlens.com" style="color:var(--cyan)">hello@agentixlens.com</a></p>
+      <p>Questions? Email <a href="/cdn-cgi/l/email-protection#d7bfb2bbbbb897b6b0b2b9a3beafbbb2b9a4f9b4b8ba" style="color:var(--cyan)"><span class="__cf_email__" data-cfemail="cfa7aaa3a3a08faea8aaa1bba6b7a3aaa1bce1aca0a2">[email&#160;protected]</span></a></p>
     </div>
   </div>
 </div>
@@ -1402,6 +1420,44 @@
   </div>
 </section>
 
+<!-- ── CONTACT SECTION ── -->
+<section class="contact-section" id="contact">
+  <div class="contact-container">
+    <div class="section-tag">
+      <span style="display:inline-block; width:6px; height:6px; background:var(--cyan); border-radius:50%;"></span>
+      Get in Touch
+    </div>
+    <h2 class="section-heading">Questions? Let's talk.</h2>
+    <p class="section-sub">Questions about AgentixLens or MetadataLoop? Reach out — we'd love to hear from you!</p>
+
+    <!-- CONTACT FORM -->
+    <form id="contactForm" onsubmit="handleContactForm(event)">
+      <div class="form-group">
+        <label for="contact-name">Your Name</label>
+        <input type="text" id="contact-name" name="name" placeholder="John Doe" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="contact-email">Email Address</label>
+        <input type="email" id="contact-email" name="email" placeholder="john@company.com" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="contact-subject">Subject</label>
+        <input type="text" id="contact-subject" name="subject" placeholder="What's this about?" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" placeholder="Tell us more..." required></textarea>
+      </div>
+
+      <button type="submit" class="form-submit" id="contactSubmitBtn">Send Message →</button>
+      <div class="form-message" id="contactMessage"></div>
+    </form>
+  </div>
+</section>
+
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-left">
@@ -1418,7 +1474,7 @@
       <line x1="11" y1="23.2" x2="15.3" y2="19" stroke="#00d4ff" stroke-width="0.75" opacity="0.4"/>
       <line x1="25" y1="23.2" x2="20.7" y2="19" stroke="#00d4ff" stroke-width="0.75" opacity="0.4"/>
     </svg>
-    <span class="footer-copy">© 2025 AgentixLens · agentixlens.com</span>
+    <span class="footer-copy">© 2026 AgentixLens · hello@agentixlens.com</span>
   </div>
   <ul class="footer-links">
     <li><a href="dashboard.html" target="_blank" style="color:var(--cyan)">Dashboard</a></li>
@@ -1426,11 +1482,11 @@
     <li><a href="https://github.com/agentixlens/agentixlens#readme" target="_blank" rel="noopener">Docs</a></li>
     <li><a href="#" onclick="openPrivacy();return false;">Privacy</a></li>
     <li><a href="https://x.com/agentixlens" target="_blank" rel="noopener">Twitter / X</a></li>
-    <li><a href="mailto:hello@agentixlens.com">Contact</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Scroll fade-in observer
   const els = document.querySelectorAll('.observe');
   const io = new IntersectionObserver((entries) => {
@@ -1440,24 +1496,94 @@
   }, { threshold: 0.12 });
   els.forEach(el => io.observe(el));
 
-  // Waitlist mock submit
-  document.querySelector('.waitlist-btn').addEventListener('click', () => {
+  // ============================================
+  // EARLY ACCESS / WAITLIST FORM (Netlify)
+  // ============================================
+  document.querySelector('.waitlist-btn').addEventListener('click', function(e) {
     const input = document.querySelector('.waitlist-input');
+    const btn = document.querySelector('.waitlist-btn');
+    const successMsg = document.getElementById('formSuccess');
+    
     if (input.value && input.value.includes('@')) {
-      const btn = document.querySelector('.waitlist-btn');
-      btn.textContent = '✓ You\'re on the list!';
-      btn.style.background = 'var(--green)';
-      input.value = '';
+      btn.disabled = true;
+      btn.textContent = 'Joining...';
+      successMsg.classList.add('show');
+      
+      // Send to your backend/webhook (optional)
       setTimeout(() => {
         btn.textContent = 'Get Early Access →';
-        btn.style.background = 'var(--cyan)';
+        btn.disabled = false;
       }, 3000);
-    } else {
-      input.style.borderColor = 'var(--red)';
-      setTimeout(() => input.style.borderColor = 'var(--border)', 2000);
     }
   });
-</script>
 
+  // ============================================
+  // CONTACT FORM (Custom Handler)
+  // ============================================
+  async function handleContactForm(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const submitBtn = document.getElementById('contactSubmitBtn');
+    const messageDiv = document.getElementById('contactMessage');
+    
+    const formData = {
+      name: document.getElementById('contact-name').value,
+      email: document.getElementById('contact-email').value,
+      subject: document.getElementById('contact-subject').value,
+      message: document.getElementById('contact-message').value,
+      timestamp: new Date().toISOString(),
+      recipientEmail: 'hello@agentixlens.com'
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    messageDiv.classList.remove('success', 'error');
+
+    try {
+      // Send to your backend email service
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        messageDiv.classList.add('success');
+        messageDiv.textContent = "✓ Message sent! We'll get back to you soon.";
+        form.reset();
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      messageDiv.classList.add('error');
+      messageDiv.textContent = '✗ Error sending message. Please email hello@agentixlens.com directly.';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message →';
+    }
+  }
+
+  // Privacy modal functions
+  function openPrivacy() {
+    document.getElementById('privacyModal').classList.add('open');
+  }
+  function closePrivacy() {
+    document.getElementById('privacyModal').classList.remove('open');
+  }
+
+  // Mobile menu functions
+  function toggleMobile() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.querySelector('.nav-hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.querySelector('.nav-hamburger').classList.remove('open');
+  }
+  document.querySelector('.nav-hamburger')?.addEventListener('click', toggleMobile);
+</script>
 </body>
 </html>
