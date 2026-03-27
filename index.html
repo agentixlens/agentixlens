@@ -1499,23 +1499,49 @@
   // ============================================
   // EARLY ACCESS / WAITLIST FORM (Netlify)
   // ============================================
-  document.querySelector('.waitlist-btn').addEventListener('click', function(e) {
-    const input = document.querySelector('.waitlist-input');
-    const btn = document.querySelector('.waitlist-btn');
+  async function handleWaitlist(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const input = form.querySelector('.waitlist-input');
+    const btn = document.getElementById('waitlistBtn');
     const successMsg = document.getElementById('formSuccess');
-    
-    if (input.value && input.value.includes('@')) {
-      btn.disabled = true;
-      btn.textContent = 'Joining...';
-      successMsg.classList.add('show');
-      
-      // Send to your backend/webhook (optional)
-      setTimeout(() => {
-        btn.textContent = 'Get Early Access →';
-        btn.disabled = false;
-      }, 3000);
+    const defaultSuccessText = '✓ You’re on the list! We’ll be in touch soon.';
+
+    if (!input.value || !input.checkValidity()) {
+      input.reportValidity();
+      return;
     }
-  });
+
+    btn.disabled = true;
+    btn.textContent = 'Joining...';
+    successMsg.classList.remove('show');
+
+    try {
+      const formData = new FormData(form);
+      const encoded = new URLSearchParams(formData).toString();
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encoded
+      });
+
+      if (!response.ok) {
+        throw new Error('Waitlist submission failed');
+      }
+
+      successMsg.textContent = defaultSuccessText;
+      successMsg.classList.add('show');
+      form.reset();
+    } catch (error) {
+      successMsg.textContent = '✗ Submission failed. Please try again or email hello@agentixlens.com.';
+      successMsg.classList.add('show');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Get Early Access →';
+    }
+  }
 
   // ============================================
   // CONTACT FORM (Custom Handler)
